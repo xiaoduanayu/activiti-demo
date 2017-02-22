@@ -3,6 +3,7 @@ package cn.cjc.activiti.test;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.repository.Deployment;
 import org.junit.Assert;
+import org.junit.Test;
 
 import java.io.InputStream;
 import java.util.zip.ZipInputStream;
@@ -22,5 +23,14 @@ public class RepositoryServiceTest extends AbstractTest {
         System.out.println(deploy.getId());
         long count = repositoryService.createProcessDefinitionQuery().count();
         Assert.assertEquals(6, count);
+    }
+
+    /**
+     * 删除部署
+     */
+    @Test
+    public void deleteDeployment() {
+        RepositoryService repositoryService = processEngine.getRepositoryService();
+        repositoryService.deleteDeployment("10001");
     }
 }
